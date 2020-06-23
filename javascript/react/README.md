@@ -8,4 +8,4 @@ npx create-react-app [appname]
 ## Modern React with Redux - Udemy
 
 ### JSX
-
+Simple project to understand JSX syntax, see project readme for comman pitfalls and best practices.
