@@ -9,3 +9,6 @@ npx create-react-app [appname]
 
 ### JSX
 Simple project to understand JSX syntax, see project readme for comman pitfalls and best practices.
+
+### Components
+
