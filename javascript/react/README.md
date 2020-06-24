@@ -11,4 +11,4 @@ npx create-react-app [appname]
 Simple project to understand JSX syntax, see project readme for comman pitfalls and best practices.
 
 ### Components
-
+Introduction to components and props using faker and component library.

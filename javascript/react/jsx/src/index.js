@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 const App = () => {
   const getButtonText = 'Click Me!';
   return (
-    <div>
+     <div>
       <label className="label" htmlFor="name">
         Enter name:
       </label>
