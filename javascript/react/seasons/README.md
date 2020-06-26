@@ -27,15 +27,29 @@ class App extends React.Component {
     this.state = {};
   }
   ```
+  or
+  ```javascript
+class App extends React.Component {
+  state - { ... };
+}
+  ```
+  babel will convert this to constructor for us.
 - State must be initialised on component creation
 - State can *only* be updated using ```this.setState({ key: value })```
 
 ### Lifecycle Methods
 
-constructor
-render
-componentDidMount - called after initial render
-componentDidUpdate - called after render
+- constructor
+- render
+- componentDidMount - called after initial render
+Best practice is to do data loading and one-time calls in here rather than constructor
+- componentDidUpdate - called after render
+- componentWillUnmount
+
+Rarer
+- shouldComponentUpdate
+- getDerivedStateFromProps
+- getSnapshotBeforeUpdate
 
 ## Tutorial Steps
 
