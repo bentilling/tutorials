@@ -41,6 +41,7 @@ class App extends React.Component {
 
 - constructor
 - render
+Avoid conditional returns in render as this can make some future changes more difficult.
 - componentDidMount - called after initial render
 Best practice is to do data loading and one-time calls in here rather than constructor
 - componentDidUpdate - called after render
@@ -50,6 +51,19 @@ Rarer
 - shouldComponentUpdate
 - getDerivedStateFromProps
 - getSnapshotBeforeUpdate
+
+### Default Props
+
+To give a component a default you can use something like ```{ props.message || 'Loading...' } in some cases a better option would be to use defaultProps  (outside of component function/class)
+```javascript
+ComponentName.defaultProps = {
+  message: 'Loading...'
+};
+### CSS
+
+- Good practise to match the component name with a class name, e.g.
+```const SeasonDisplay = props => <div className="season-display"></div>```
+- ```import './SeasonDisplay.css'``` - webpack will embed into html
 
 ## Tutorial Steps
 
@@ -63,3 +77,7 @@ window.navigation.geolocation.getCurrentPosition()
 - If lattitude returned then show
 - If error show error
 - otherwise show loading
+5. Create a new component 'SeasonDisplay'
+6. Use ```new Date().getMonth()``` with lat to determine Summer/Winter
+7. Display sun/snowflake icons and message depending on season.
+8. Do some nice CSS formatting.
