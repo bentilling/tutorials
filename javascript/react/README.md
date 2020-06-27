@@ -11,4 +11,13 @@ npx create-react-app [appname]
 Simple project to understand JSX syntax, see project readme for comman pitfalls and best practices.
 
 ### Components
-Introduction to components and props using faker and component library.
+Introduction to components and props using faker and semantic ui component library.
+
+### Seasons
+Project that displays a seasonal message and icon after the result of a location callback, showing a spinner whilst waiting. 
+
+Learning Topics:
+- Class components
+- Lifecycle methods
+- State
+- Default Props
