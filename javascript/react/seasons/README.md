@@ -1,5 +1,7 @@
 # Seasons Project
 
+![](seasons.gif)
+
 ## Learnings
 
 ### Class-based Components
@@ -20,20 +22,24 @@ class App extends React.Component {
 - Unless you are using hooks only class components can use state
 - JS Object that only contains data releveant to the component
 - A change in state rerenders the component
-  ```javascript
+
+```javascript
   constructor(props) {
     super(props); // calls React.Component constructor
 
     this.state = {};
   }
-  ```
+```
+
   or
-  ```javascript
+
+``` javascript
 class App extends React.Component {
-  state - { ... };
+  state = { ... };
 }
-  ```
-  babel will convert this to constructor for us.
+```
+
+- babel will convert this to constructor for us.
 - State must be initialised on component creation
 - State can *only* be updated using ```this.setState({ key: value })```
 
@@ -59,6 +65,8 @@ To give a component a default you can use something like ```{ props.message || '
 ComponentName.defaultProps = {
   message: 'Loading...'
 };
+```
+
 ### CSS
 
 - Good practise to match the component name with a class name, e.g.
@@ -81,3 +89,4 @@ window.navigation.geolocation.getCurrentPosition()
 6. Use ```new Date().getMonth()``` with lat to determine Summer/Winter
 7. Display sun/snowflake icons and message depending on season.
 8. Do some nice CSS formatting.
+9. Create a loading spinner with default props
