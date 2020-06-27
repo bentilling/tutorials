@@ -1,68 +1,117 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Pics Project
 
-## Available Scripts
+An app that lets a user search and term and displays a list of pictures related to that term.
 
-In the project directory, you can run:
+## Learnings
 
-### `yarn start`
+### Controlled vs Uncontrolled Elements
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The below is an example of an uncontrolled element, for this input we do not know its value unless we go the DOM.
+```javascript
+<input type="text" onChange={e => console.log(e.target.value)} />
+```
+In a React world we always want to know and control elements without interacting directly with the DOM. The below is how we would refactor to be a 'controlled' element.
+```javascipt
+state = { term: '' };
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+<input 
+  type="text"
+  value={ this.state.term }
+  onChange={ e => this.setState({term: e.target.value}) } >
+```
 
-### `yarn test`
+Notice that we are now using state, so after every setState we are calling render and setting the input value to the same value it already has.
+The advantage to this seemingly extra step is that we can easily modify default values or user input, for example capitalising their input.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Using event handlers
 
-### `yarn build`
+#### Naming Conventions
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+on(or handle) ElementName WatchedEvent e.g.
+- onInputChange
+- onFormSubmit
+- onIconClick
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Call argument 'event' unless using one line arrow function then use 'e'.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### Context Issues with 'this'
 
-### `yarn eject`
+Getting a 'Cannot read property 'state' of undefined' error is likely due to 'this' not referencing the class. There are many ways to solve this, the most common are...
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+##### Bind
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+An older way of doing this is to use bind in the constructor
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+``` javascript
+class Component extends React.Component {
+  constructor() {
+    super(props);
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+    this.onLabelClick = this.onLabelClick.bind(this);
+  }
+  onLabelClick(event) {
+    ...
+  }
+}
+```
 
-## Learn More
+##### Arrow Functions
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Using the above method we can call this differently to force the correct value of 'this' without needing to bind in the constructor.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+``` javascript
+<input onChange={ e => this.onLabelClick(e) }>
+``` 
+rather than
+``` javascript
+<input onChange={ this.onLabelClick }>
+``` 
 
-### Code Splitting
+Alternatively, we can create the method with ES6 syntax to automatically bind.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+``` javascript
+onLabelClick = event => {
+  ...
+}
+``` 
 
-### Analyzing the Bundle Size
+### Handling API Responses
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+#### Promises
 
-### Making a Progressive Web App
+Use `then` to trigger a callback when the promise is resolved.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+```javascript
+axios.get('endpoint', { params: { ... }, headers: { ... } })
+  .then(response => console.log(response));
+```
 
-### Advanced Configuration
+#### Async/Await
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+Attach `async` to the method and `await` to the axios call.
 
-### Deployment
+```javascript
+async onSearchTerm(term) {
+  const reponse = await axios.get('endpoint', 
+  { params: { ... }, headers: { ... } });
+}
+console.log(response);
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
 
-### `yarn build` fails to minify
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+#### Notes
+
+- When passing a method to onChange make sure not to include parenthesis, this will invoke the function on render and not pass the reference as expected
+- Use event.preventDefault() to stop forms from trying to reload page
+- Make sure you initialise state with appropriate empty variables, so if it will be an array initilaise as `[]` so that a call like `map` will not error out.
+
+## Tutorial
+
+1. Create App, SearchBar and ImageList components in new components directory
+2. Add a text input in SearchBar from Semantic UI and format 
+3. Ensure that the search bar is a connected element
+4. Disable automated form submit 
+5. Define a function onSearchSubmit in App component and invoke it from SearxhBar
+
