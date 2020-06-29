@@ -1,9 +1,17 @@
 # React Tutorials
 
+## Setup
 Kick it off with 
 ```bash
 npx create-react-app [appname]
 ```
+
+### Linting and formatting
+```bash
+yarn add --dev prettier eslint eslint-config-prettier eslint-plugin-prettier eslint-plugin-react
+yarn eslint --init
+```
+
 
 ## Modern React with Redux - Udemy
 

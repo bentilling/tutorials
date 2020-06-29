@@ -94,24 +94,57 @@ Attach `async` to the method and `await` to the axios call.
 async onSearchTerm(term) {
   const reponse = await axios.get('endpoint', 
   { params: { ... }, headers: { ... } });
+
+  console.log(response);
 }
-console.log(response);
 ```
 
+Async arrow methods have the following syntax
+```javascript
+onSearchSubmit = async (term) => {
+  ...
+}
+```
 
+#### Interacting with the DOM
 
+Traditionally to get an attribute of an element on the DOM you may do something like
+```javascript
+document.querySelector('img').clientHeight
+```
+However within React we use the 'Refs' system.
+
+To create a reference we write the following in the components constructor
+```javascript
+constructor(props) {
+  super(props);
+
+  this.imageRef = React.createRef();
+}
+```
+we can now pass this ref as prop in JSX with `<img ref={this.imageRef} />`
 
 #### Notes
 
 - When passing a method to onChange make sure not to include parenthesis, this will invoke the function on render and not pass the reference as expected
 - Use event.preventDefault() to stop forms from trying to reload page
 - Make sure you initialise state with appropriate empty variables, so if it will be an array initilaise as `[]` so that a call like `map` will not error out.
+- React wants to compare a rendered list to what is currently in the DOM, the purpose of the `key` attribute is to do this in a performant way. When this isn't done you will see
+  ```
+  Warning: ... an array or iterator should have a unique key prop.
+  ```
 
 ## Tutorial
 
-1. Create App, SearchBar and ImageList components in new components directory
+1. Create App and SearchBar components in new components directory
 2. Add a text input in SearchBar from Semantic UI and format 
 3. Ensure that the search bar is a connected element
 4. Disable automated form submit 
-5. Define a function onSearchSubmit in App component and invoke it from SearxhBar
-
+5. Define a function onSearchSubmit in App component and invoke it from SearchBar
+6. Create a call to unsplash search/photo API and assign result to state
+7. Refactor api config into api/unsplash.js using `axios.create()`
+8. Create functional ImageList component passing array of images
+9. Render list of images
+10. Create ImageList.css and implement css grid
+11. Abstract ImageCard to a separate component
+12. Use the grid-row-end property to dynamically set appropriate spacing between images
