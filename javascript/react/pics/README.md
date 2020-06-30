@@ -124,6 +124,13 @@ constructor(props) {
 ```
 we can now pass this ref as prop in JSX with `<img ref={this.imageRef} />`
 
+#### CSS Grid
+
+https://css-tricks.com/snippets/css/complete-guide-grid/
+```css
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+```
+
 #### Notes
 
 - When passing a method to onChange make sure not to include parenthesis, this will invoke the function on render and not pass the reference as expected
