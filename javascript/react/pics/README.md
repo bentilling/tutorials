@@ -138,6 +138,11 @@ https://css-tricks.com/snippets/css/complete-guide-grid/
 ```css
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 ```
+#### Better Key management
+
+Create `.env ` in project directory with a `REACT_APP_API_KEY`. Note that the `REACT_APP_` here is mandatory.
+
+You can then access this from `process.env.REACT_APP_API_KEY`. Note that this only pretects from source control, it is easy enough to obtain this key within the browser.
 
 #### Notes
 
