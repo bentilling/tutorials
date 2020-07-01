@@ -24,8 +24,21 @@ Introduction to components and props using faker and semantic ui component libra
 ### Seasons
 Project that displays a seasonal message and icon after the result of a location callback, showing a spinner whilst waiting. 
 
+<img src="./seasons/seasons.gif" width="350px" />
+
 Learning Topics:
 - Class components
 - Lifecycle methods
 - State
 - Default Props
+
+### Pics
+Allows you to search for a term and get a selection of tiled related images.
+
+<img src="./pics/pics.gif" width="350px" />
+
+Learning Topics
+- Controlled Elements
+- Axios / Interacting with APIs
+- Event Handlers
+- Interacting with the DOM
