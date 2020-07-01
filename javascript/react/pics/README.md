@@ -2,6 +2,8 @@
 
 An app that lets a user search and term and displays a list of pictures related to that term.
 
+![](pics.gif)
+
 ## Learnings
 
 ### Controlled vs Uncontrolled Elements
@@ -122,7 +124,13 @@ constructor(props) {
   this.imageRef = React.createRef();
 }
 ```
-we can now pass this ref as prop in JSX with `<img ref={this.imageRef} />`
+we can now pass this ref as prop in JSX with `<img ref={this.imageRef} />` and reference with `this.imageRef.current`. In the case of this project we are waiting the result of an api call, to listen for when this is ready we can add the following to trigger `setSpans` when ready.
+
+```javascript
+componentDidVount() {
+  this.imgRef.current.addEventListener('load', this.setSpans);
+}
+```
 
 #### CSS Grid
 
