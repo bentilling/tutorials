@@ -42,3 +42,5 @@ Learning Topics
 - Axios / Interacting with APIs
 - Event Handlers
 - Interacting with the DOM
+
+### Videos
