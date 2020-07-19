@@ -140,9 +140,13 @@ https://css-tricks.com/snippets/css/complete-guide-grid/
 ```
 #### Better Key management
 
-Create `.env ` in project directory with a `REACT_APP_API_KEY`. Note that the `REACT_APP_` here is mandatory.
+Create `.env ` in project directory with
+```
+REACT_APP_API_KEY= XXXXXXX
+``` 
+Note that the `REACT_APP_` here is mandatory.
 
-You can then access this from `process.env.REACT_APP_API_KEY`. Note that this only pretects from source control, it is easy enough to obtain this key within the browser.
+You can then access this from `process.env.REACT_APP_API_KEY`. Note that this only protects from source control, it is easy enough to obtain this key within the browser.
 
 #### Notes
 
