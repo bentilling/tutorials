@@ -60,6 +60,7 @@ router.get('/:productId', (req, res, next) => {
 200 - Success (for GET)
 201 - Successful resource created (for POST)
 400 - Bad Request
+404 - Not found
 
 ## Tutorial Steps
 
