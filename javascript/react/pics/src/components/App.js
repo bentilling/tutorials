@@ -10,7 +10,7 @@ class App extends React.Component {
   }
 
   onSearchSubmit = async (term) => {
-    const pics = await api.get('https://api.unsplash.com/search/photos', {
+    const pics = await api.get('/search/photos', {
       params: {
         query: term,
       },
