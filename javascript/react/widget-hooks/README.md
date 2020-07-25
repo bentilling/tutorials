@@ -1,6 +1,6 @@
 # Widget Project - Hooks
 
-## State
+## useState
 
 ```javascipt
 import React, { useState } from 'react';
@@ -13,6 +13,32 @@ activeIndex; // 10
 
 ```
 
+## useEffect
+Hooks replacement for lifecycle methods, these run in three ways.
+
+```
+useEffect(() => {
+  // do something
+}, 
+
+)
+```
+If second arguement is
+- empty then run *after* initial render and every rerender
+- [] then run at initial render
+- [data] then run at inital render and every rerender if the data has changed
+
+## Timeouts
+
+Set a delay with the syntax
+``` javascript
+setTimeout(() => {
+  // do something
+  , 100 )
+```
+this function returns an id which allows you to cancel the timer with `clearTimeout(id)`
+
+
 ## Tutorial
 1. Build an accordion with hooks
-
+2. Build a wiki search application 
