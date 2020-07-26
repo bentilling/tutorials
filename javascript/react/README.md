@@ -8,8 +8,8 @@ npx create-react-app [appname]
 
 ### Linting and formatting
 ```bash
-yarn add --dev prettier eslint eslint-config-prettier eslint-plugin-prettier eslint-plugin-react
 yarn eslint --init
+yarn add --dev prettier eslint-config-prettier eslint-plugin-prettier 
 ```
 
 

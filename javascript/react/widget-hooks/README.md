@@ -28,13 +28,15 @@ If second arguement is
 - [] then run at initial render
 - [data] then run at inital render and every rerender if the data has changed
 
+The only thing you are allowed to return from useEffect is another function. 
+This only gets involked on the next rerender.
 ## Timeouts
 
 Set a delay with the syntax
 ``` javascript
 setTimeout(() => {
   // do something
-  , 100 )
+  , 100 })
 ```
 this function returns an id which allows you to cancel the timer with `clearTimeout(id)`
 
