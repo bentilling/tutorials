@@ -1,10 +1,8 @@
 const express = require('express');
-const morgan = require('morgan');
 const cors = require('cors');
 const { randomBytes } = require('crypto');
 
 const app = express();
-app.use(morgan('dev'));
 app.use(express.json());
 app.use(cors());
 
@@ -21,4 +19,6 @@ app.post('/posts', (req, res) => {
   res.status(201).json(posts[id])
 })
 
-app.listen(4000);
+app.listen(4000, () => {
+  console.log('Listening on 4000');
+});
