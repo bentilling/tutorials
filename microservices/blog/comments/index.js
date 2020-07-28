@@ -1,10 +1,12 @@
 const express = require('express');
 const cors = require('cors');
 const { randomBytes } = require('crypto');
+const morgan = require('morgan');
 
 const app = express();
 app.use(express.json());
-app.use(cors())
+app.use(cors());
+app.use(morgan('dev'));
 
 const commentsByPostId = {};
 
@@ -23,6 +25,10 @@ app.post('/posts/:id/comments', (req, res) => {
 commentsByPostId[req.params.id] = comments; 
   res.status(201).send(comments);
 
+})
+
+app.post('/events', (req, res) => {
+  res.send({});
 })
 
 app.listen(4001, () => console.log('listening on 4001') );
