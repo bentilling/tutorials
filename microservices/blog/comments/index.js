@@ -11,11 +11,6 @@ app.use(morgan('dev'));
 
 const commentsByPostId = {};
 
-app.get('/posts/:id/comments', (req, res) => {
-  const { id } = req.params;
-  res.send(commentsByPostId[id] || []);
-});
-
 app.post('/posts/:id/comments', async (req, res) => {
   const { content } = req.body;
   const postId = req.params.id;
@@ -31,7 +26,7 @@ app.post('/posts/:id/comments', async (req, res) => {
     data: {
       postId,
       commentId: id,
-      comment: content,
+      content,
       status: 'pending',
     },
   });
