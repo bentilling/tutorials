@@ -1,9 +1,9 @@
-FROM node:10
+FROM node:alpine
 
 WORKDIR app/
 
 COPY package.json ./
-RUN yarn 
+RUN npm install 
 COPY ./ ./
 
-CMD ["yarn", "start"]
+CMD ["npm", "start"]
