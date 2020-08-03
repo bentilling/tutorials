@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Accordion from './components/Accordion';
 import Search from './components/Search';
 import Dropdown from './components/Dropdown';
+import Translate from './components/Translate';
 
 const App = () => {
   const items = [
@@ -17,23 +18,32 @@ const App = () => {
   const [selected, setSelected] = useState(options[0]);
   const [visible, setVisible] = useState(true);
 
+  const showDropdown = () => {
+    return (
+      <div>
+        <button
+          className="button"
+          onClick={() => {
+            setVisible(!visible);
+          }}
+        >
+          Toggle Dropdown
+        </button>
+
+        {visible ? (
+          <Dropdown
+            options={options}
+            selected={selected}
+            onDropdownChange={setSelected}
+            label="Pick a Colour"
+          />
+        ) : null}
+      </div>
+    );
+  };
   return (
     <div className="ui segment">
-      <button
-        className="button"
-        onClick={() => {
-          setVisible(!visible);
-        }}
-      >
-        Toggle Dropdown
-      </button>
-      {visible ? (
-        <Dropdown
-          options={options}
-          selected={selected}
-          onDropdownChange={setSelected}
-        />
-      ) : null}
+      <Translate />
     </div>
   );
 };
