@@ -5,7 +5,7 @@ import { songSelected } from '../actions';
 const SongList = (props) => {
   const renderedSongs = props.songs.map((song) => (
     <div key={song.title}>
-      <div>{song.title}</div>
+      <div className="right floating">{song.title}</div>
       <button className="ui primary button">Detail</button>
     </div>
   ));
